@@ -1,0 +1,10 @@
+
+
+================== Steps for implementing Spring security in project ==================
+
+1) Onboard the user with credentials ----> User object -> UserDetails
+2) Accept username and password from user ----> AuthenticationProvider -> Authentication object
+3) Fetch the user from database ----> UserdetailsService Implementation
+4) Compare the password-hash of the user ----> AuthenticationProvider -> PasswordEncoder
+5) Check the user has authority on API ----> SecurityFilterChain
+6) Let the user use the API ----> AuthenticaionProvider
