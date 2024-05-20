@@ -14,5 +14,6 @@ public class ResourceConfig {
         messageSource.setBasename("classpath:messages/message");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
+        /// added
     }
 }
