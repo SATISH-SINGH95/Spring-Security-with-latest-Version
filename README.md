@@ -96,7 +96,7 @@ curl -X POST http://localhost:9999/signup/auth/createUser \
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
 ## Contact
-For questions or feedback, please contact sk95satish@gmail.com.
+For questions or feedback, please contact sk95satish@gmail.com
 
 
     
