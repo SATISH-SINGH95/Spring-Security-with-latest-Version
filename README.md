@@ -23,7 +23,7 @@ This project is a Java backend application that demonstrates the implementation 
 ## Getting Started
 - **Clone the Repository**
 ```bash
-git clone https://github.com/your-username/spring-security-auth.git cd spring-security-auth
+git clone https://github.com/SATISH-SINGH95/Spring-Security-with-latest-Version cd spring-security-auth
 ```
 
 ## Configure application.properties file
