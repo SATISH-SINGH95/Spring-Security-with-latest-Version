@@ -15,5 +15,6 @@ public class ResourceConfig {
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
         /// added
+        // added 2
     }
 }
