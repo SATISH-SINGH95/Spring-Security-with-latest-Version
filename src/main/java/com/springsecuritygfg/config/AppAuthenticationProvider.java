@@ -25,16 +25,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AppAuthenticationProvider implements AuthenticationProvider{
 
-    // Authenticaion Object - It will hold the details of username and password which has been provided by the user.
+    // Authentication Object - It will hold the details of username and password which has been provided by the user.
 
-    @Autowired
-    private UserDetailsService userDetailsService;
+    private final UserDetailsService userDetailsService;
 
-    @Autowired
-    private MessageSource messageSource;
+    private final MessageSource messageSource;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+
+    public AppAuthenticationProvider(UserDetailsService userDetailsService, MessageSource messageSource,
+            PasswordEncoder passwordEncoder) {
+        this.userDetailsService = userDetailsService;
+        this.messageSource = messageSource;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -44,7 +48,7 @@ public class AppAuthenticationProvider implements AuthenticationProvider{
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         if(Objects.nonNull(userDetails)){
             if(passwordEncoder.matches(authentication.getCredentials().toString(), userDetails.getPassword())){
-                //authentication is successfull
+                //authentication is successfully
                 log.debug("Authentication Success");
                 return new UsernamePasswordAuthenticationToken(userDetails.getUsername(), passwordEncoder.encode(userDetails.getPassword()), userDetails.getAuthorities());
             }
@@ -57,10 +61,7 @@ public class AppAuthenticationProvider implements AuthenticationProvider{
         if(UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication)){
             return true;
         }
-        if(JaasAuthenticationProvider.class.isAssignableFrom(authentication)){
-            return true;
-        }
-        return false;
+        return JaasAuthenticationProvider.class.isAssignableFrom(authentication);
     }
 
 }
